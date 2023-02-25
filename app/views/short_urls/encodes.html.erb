@@ -1,0 +1,42 @@
+<main class="form-signin">
+  <%= simple_form_for ShortUrl.new, url: encode_path, method: :post do |f| %>
+      <h1 class="h3 mb-3 fw-normal">Generate Shorterning Url</h1>
+
+
+      <div class="form-floating">
+        <%= f.input :long_url, input_html: {class: 'form-control longUrl'}, label: false %>
+      </div>
+
+      <div class="btn-group w-100" role="group" aria-label="Basic mixed styles example">
+        <%= f.button :submit, 'Generate', class: "btn btn-warning" %>
+        <%= link_to "Decode", decodes_path, class: "btn btn-secondary" %>
+      </div>
+  <% end %>
+</main>
+
+<style>
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 550px;
+  padding: 15px;
+  margin: auto;
+}
+
+.longUrl {
+  margin-bottom: 10px;
+}
+
+</style>
