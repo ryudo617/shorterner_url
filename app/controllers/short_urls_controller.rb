@@ -10,14 +10,7 @@ class ShortUrlsController < ApplicationController
     short_url = ShortUrl.create!(long_url: long_url, code: code)
 
     # Return the short URL to the client
-    respond_to do |format|
-      format.html do
-        redirect_to short_url && decodes_path || encodes_path 
-      end
-      format.json do
-        render json: { short_url: "#{request.base_url}/#{code}" }
-      end
-    end
+    redirect_to short_url && decodes_path || encodes_path 
   end
 
   def decode
@@ -31,14 +24,7 @@ class ShortUrlsController < ApplicationController
       render plain: "Not Found", status: 404
     end
 
-    respond_to do |format|
-      format.html do
-        redirect_to decodes_path(short_url: short_url.long_url)
-      end
-      format.json do
-        render json: { short_url: short_url.long_url }
-      end
-    end
+    redirect_to decodes_path(short_url: short_url.long_url)
   end
 
   private

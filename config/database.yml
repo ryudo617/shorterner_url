@@ -11,3 +11,9 @@ development:
   username: ron
   password: ron
 
+test:
+  <<: *default
+  database: url_shortener_test
+  username: ron
+  password: ron
+
